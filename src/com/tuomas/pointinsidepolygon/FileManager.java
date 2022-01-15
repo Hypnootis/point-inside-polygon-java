@@ -1,4 +1,4 @@
-package com.tuomas.pointinsidepolygon;
+	package com.tuomas.pointinsidepolygon;
 
 public class FileManager {
 

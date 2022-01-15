@@ -7,40 +7,37 @@ import com.tuomas.pointinsidepolygon.Point;
 
 public class PointTest {
 
-	@Test
-	public void canReturnList() {
-		Point testPoint = new Point();
-		Assert.assertTrue(testPoint.getPoints() instanceof int[]);
-	}
 	
 	@Test
 	public void canReturnListOfNumbers() {
 		Point testPoint = new Point();
-		int[] testList = {0, 0};
+		double[] testArray = {0, 0};
 		
-		Assert.assertArrayEquals(testList, testPoint.getPoints());
+		Assert.assertEquals(testArray, testPoint.getCoordinates());
 	}
 	
 	@Test
-	public void canSetNumbersList() {
+	public void canSetNumbersAsArray() {
 		Point testPoint = new Point();
-		int[] testList = {1, 2};
+		double[] testArray = {1, 2};
 		
-		testPoint.setPoints(testList);
+		testPoint.setCoordinates(testArray);
 		
-		Assert.assertArrayEquals(testList, testPoint.getPoints());
+		Assert.assertEquals(testArray, testPoint.getCoordinates());
 	}
 	
 	
 	@Test
 	public void canSetIndividualNumbers() {
 		Point testPoint = new Point();
-		int testInt1 = 1;
-		int testInt2 = 5;
-		int[] expectedOutcome = {1, 5};
+		double testInt1 = 1;
+		double testInt2 = 5;
+		double[] expectedOutcome = {1, 5};
 		
-		testPoint.setPoints(testInt1, testInt2);
+		testPoint.setCoordinates(testInt1, testInt2);
 		
-		Assert.assertArrayEquals(expectedOutcome, testPoint.getPoints());
+		Assert.assertEquals(expectedOutcome, testPoint.getCoordinates());
 	}
+	
+	
 }
