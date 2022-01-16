@@ -8,20 +8,16 @@ import java.util.List;
 public class FileManager {
 	
 		private static List<String> fileContents;
-		private static String fileName = new String();
-		private static Path path = Paths.get("src/" + fileName);
 	
 		public void ReadFile(String fileName) {
 		
+			Path path = Paths.get("src/" + fileName);
 			try {
 			
-				List<String> lines; // java.nio.file.File returns file contents in List<String> format
-				lines = Files.readAllLines(path);
+				// java.nio.file.File returns file contents in List<String> format
+				fileContents = Files.readAllLines(path);
 			
-					
-			
-			
-				if (lines.isEmpty()) {
+				if (fileContents.isEmpty()) {
 				throw new RuntimeException(fileName + " is an empty file");
 				}
 			
@@ -65,14 +61,18 @@ public class FileManager {
 		}
 		
 		
-		public static void writeToFile(String[] writing, String fileName) {
-			this.fileName = fileName;
+		public static void writeToFile(ArrayList<String> writing, String fileName) {
+			
+			Path path = Paths.get("src/" + fileName);
+			createFile(fileName, path);
 			
 			try {
-			
+				
 			for (String line : writing) {
-				Files.write(this.path, line.getBytes());
+				line += "\n";
+				Files.write(path, line.getBytes(), StandardOpenOption.APPEND);
 			}
+			
 		} catch (Exception e) {
 			System.out.println("Error writing to file!");
 			e.printStackTrace();

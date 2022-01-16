@@ -1,0 +1,4 @@
+Point [1.2, 1.6] is inside the polygon
+Point [3.0, 1.0] is inside the polygon
+Point [3.5, 6.0] is inside the polygon
+Point [4.0, 6.111] is inside the polygon

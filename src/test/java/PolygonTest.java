@@ -71,14 +71,15 @@ public class PolygonTest {
 		
 		Polygon testPolygon = new Polygon();
 		FileManager reader = new FileManager();
-		ArrayList<Point> points = Point.coordinatesFromFile("pisteet");
+		ArrayList<Point> points = Point.coordinatesFromFile("pisteet.txt");
 		
 		testPolygon.pointsFromFile("polygoni.txt");
 		
 		for (Point testPoint : points) {
 			testPolygon.isInside(testPoint);
 		}
-		reader.ReadFile("selvitys.txt");
+		testPolygon.writeResults("testSelvitys.txt");
+		reader.ReadFile("testSelvitys.txt");
 		List<String> results = reader.getData();
 		
 		Assert.assertFalse(results.isEmpty());
