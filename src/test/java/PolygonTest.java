@@ -7,6 +7,7 @@ import com.hypnootis.pointinsidepolygon.*;
 import org.junit.Assert;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PolygonTest {
 
@@ -62,6 +63,27 @@ public class PolygonTest {
 		Point testPoint = new Point(10.52, 20.15);
 		
 		Assert.assertTrue(testPolygon.isInside(testPoint));
+	}
+	
+	
+	@Test
+	public void pointFromFileInTriangle() {
+		
+		Polygon testPolygon = new Polygon();
+		FileManager reader = new FileManager();
+		ArrayList<Point> points = Point.coordinatesFromFile("pisteet");
+		
+		testPolygon.pointsFromFile("polygoni.txt");
+		
+		for (Point testPoint : points) {
+			testPolygon.isInside(testPoint);
+		}
+		reader.ReadFile("selvitys.txt");
+		List<String> results = reader.getData();
+		
+		Assert.assertFalse(results.isEmpty());
+
+		
 	}
 	
 	

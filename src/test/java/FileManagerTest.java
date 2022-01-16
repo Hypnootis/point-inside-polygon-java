@@ -1,6 +1,7 @@
 package test.java;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,12 +20,13 @@ public class FileManagerTest {
 	public void isFileEmpty() {
 		FileManager reader = new FileManager();
 		reader.ReadFile("pisteet.txt");
-		ArrayList<double[]> testArray = reader.getData();
+		List<String> testArray = reader.getData();
 		
-		Assert.assertEquals(false, testArray.isEmpty());
+		Assert.assertFalse(testArray.isEmpty());
 		
 	}
 	
+	/*
 	@Test
 	public void canReturnDoubleArray() {
 		FileManager reader = new FileManager();
@@ -34,5 +36,7 @@ public class FileManagerTest {
 		
 		Assert.assertSame(expectedArray, testArray);
 	}
+	
+	*/
 	
 }

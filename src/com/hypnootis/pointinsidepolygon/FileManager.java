@@ -6,30 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager {
-
-	private static ArrayList<double[]> fileContents = new ArrayList<double[]>();
+	
+		private static List<String> fileContents;
+		private static String fileName = new String();
+		private static Path path = Paths.get("src/" + fileName);
 	
 		public void ReadFile(String fileName) {
 		
 			try {
 			
-				Path path = Paths.get("src/" + fileName);
 				List<String> lines; // java.nio.file.File returns file contents in List<String> format
 				lines = Files.readAllLines(path);
-				
-				for (String line : lines) {
-					String[] strCoordinates = line.split(",");
-					double[] dblCoordinates = new double[2]; // ex. line: [1.5, 1.2]
+			
 					
-					try {
-					dblCoordinates[0] = Double.parseDouble(strCoordinates[0]);
-					dblCoordinates[1] = Double.parseDouble(strCoordinates[1]);
-					
-					fileContents.add(dblCoordinates);
-					} catch (Exception e) {
-						System.out.println("Failed to convert line to double!");
-					}
-				}
 			
 			
 				if (lines.isEmpty()) {
@@ -47,16 +36,14 @@ public class FileManager {
 		
 			}
 	
-		public ArrayList<double[]> getData(){
+		public List<String> getData(){
 		
 		return fileContents;
 	}
 	
-		
-		private static Path path = Paths.get("src/selvitys.txt");
 
 		
-		public static void createFile() {
+		public static void createFile(String fileName, Path path) {
 		
 		try {
 
@@ -78,9 +65,14 @@ public class FileManager {
 		}
 		
 		
-		public static void writeToFile(String writing) {
+		public static void writeToFile(String[] writing, String fileName) {
+			this.fileName = fileName;
+			
 			try {
-			Files.write(path, writing.getBytes());
+			
+			for (String line : writing) {
+				Files.write(this.path, line.getBytes());
+			}
 		} catch (Exception e) {
 			System.out.println("Error writing to file!");
 			e.printStackTrace();

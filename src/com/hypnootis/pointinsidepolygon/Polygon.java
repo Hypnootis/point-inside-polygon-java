@@ -1,10 +1,12 @@
 package com.hypnootis.pointinsidepolygon;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class Polygon {
 
 	private ArrayList<Point> coordinates = new ArrayList<Point>();
+	private ArrayList<Point> testPointsInside = new ArrayList<Point>();
 	
 	public void setPoint(Point newCoordinate) {
 		
@@ -41,10 +43,30 @@ public class Polygon {
 				intersections++;
 			}
 		}
-		
+	
+		this.testPointsInside.add(testPoint);
 		
 	return (intersections % 2 != 0 ? true : false);
 		
+	}
+
+	public void pointsFromFile(String fileName) {
+		
+	ArrayList<Point> pointsArray = Point.coordinatesFromFile(fileName);
+		
+	for (Point newPoint : pointsArray) {
+		this.coordinates.add(newPoint);
+	}
 	} 
+	
+	public void writeResults(String fileName) {
+		
+		ArrayList<String> content = new ArrayList<String>();
+		
+		for (Point point : testPointsInside) {
+		FileManager.writeToFile(content, fileName);
+	}
+	}
 
 }
+
