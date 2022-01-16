@@ -1,9 +1,10 @@
 package test.java;
 
 import org.junit.Test;
-import org.junit.Assert;
 
-import com.tuomas.pointinsidepolygon.Point;
+import com.hypnootis.pointinsidepolygon.Point;
+
+import org.junit.Assert;
 
 public class PointTest {
 

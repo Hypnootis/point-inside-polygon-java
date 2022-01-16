@@ -1,4 +1,4 @@
-package com.tuomas.pointinsidepolygon;
+package com.hypnootis.pointinsidepolygon;
 
 public class Main {
 

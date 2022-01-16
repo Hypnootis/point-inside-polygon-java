@@ -1,11 +1,12 @@
 package test.java;
 
 import org.junit.Test;
+
+import com.hypnootis.pointinsidepolygon.*;
+
 import org.junit.Assert;
 
 import java.util.ArrayList;
-
-import com.tuomas.pointinsidepolygon.*;
 
 public class PolygonTest {
 
@@ -46,12 +47,21 @@ public class PolygonTest {
 		Point testPoint = new Point();
 		testPoint.setCoordinates(10, 15);
 		
-		Assert.assertEquals(true, testPolygon.isInside(testPoint));
+		Assert.assertTrue(testPolygon.isInside(testPoint));
 	}
 	
 	@Test
 	public void isPointInsideRectangle() {
 		
+		Polygon testPolygon = new Polygon();
+		testPolygon.setPoint(new Point(0.7, 0));
+		testPolygon.setPoint(new Point(0.7, 50.1));
+		testPolygon.setPoint(new Point(50.1, 50.9));
+		testPolygon.setPoint(new Point(50.9, 0.7));
+		
+		Point testPoint = new Point(10.52, 20.15);
+		
+		Assert.assertTrue(testPolygon.isInside(testPoint));
 	}
 	
 	
