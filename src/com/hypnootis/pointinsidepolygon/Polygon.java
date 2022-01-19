@@ -1,5 +1,7 @@
 package com.hypnootis.pointinsidepolygon;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,6 +18,7 @@ public class Polygon {
 	public ArrayList<Point> getPoints() {
 		
 		return this.coordinates;
+		
 	}
 
 	public boolean isInside(Point testPoint) {
@@ -38,8 +41,9 @@ public class Polygon {
 			// If a line was drawn from the testPoint to the right, intersections with the line are counted
 			// Intersections divisible by 2 = point is outside
 			
-			if (pointY < y1 != pointY < y2 &&
-				pointX < (x2 - x1) * (pointY - y1) / (y2 - y1) + x1) {
+			if ((pointY < y1 != pointY < y2 &&
+				pointX < (x2 - x1) * (pointY - y1) / (y2 - y1) + x1)
+				|| (pointX == x1 && pointY == y1)) {// If point is a polygon's point
 				intersections++;
 			}
 		}
@@ -47,7 +51,6 @@ public class Polygon {
 		this.testPointsInside.add(testPoint);
 		
 	return (intersections % 2 != 0 ? true : false);
-		
 	}
 
 	public void pointsFromFile(String fileName) {

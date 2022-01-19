@@ -87,6 +87,24 @@ public class PolygonTest {
 		
 	}
 	
+	@Test
+	public void pointSameAsPolygonsPoint() {
+		
+		Polygon testPolygon = new Polygon();
+		testPolygon.pointsFromFile("polygoni.txt");
+		Point testPoint = new Point(2.5, 2.0);
+		
+		Assert.assertTrue(testPolygon.isInside(testPoint));
+	}
+	
+	@Test
+	public void pointOnPolygonsSide() {
+		Polygon testPolygon = new Polygon();
+		testPolygon.pointsFromFile("polygoni.txt");
+		Point testPoint = new Point(2,3);
+		
+		Assert.assertTrue(testPolygon.isInside(testPoint));
+	}
 	
 	
 	
