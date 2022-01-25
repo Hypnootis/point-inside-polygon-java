@@ -1,5 +1,6 @@
 package com.hypnootis.pointinsidepolygon;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Main {
@@ -23,7 +24,7 @@ public class Main {
 		}
 		
 		
-		testPolygon.writeResults("selvitys.txt");
+		testPolygon.writeResults("selvitys.txt", Paths.get("src/"));
 	}
 
 }

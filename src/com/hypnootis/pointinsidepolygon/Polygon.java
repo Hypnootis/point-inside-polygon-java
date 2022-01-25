@@ -1,5 +1,7 @@
 package com.hypnootis.pointinsidepolygon;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -60,14 +62,14 @@ public class Polygon {
 	}
 	} 
 	
-	public void writeResults(String fileName) {
+	public void writeResults(String fileName, Path path) {
 		
 		ArrayList<String> content = new ArrayList<String>();
 		
 		for (Point point : testPointsInside) {
 		content.add("Point " + Arrays.toString(point.getCoordinates()) + " is inside the polygon");
 	}
-		FileManager.writeToFile(content, fileName);
+		FileManager.writeToFile(content, fileName, path);
 	}
 
 }

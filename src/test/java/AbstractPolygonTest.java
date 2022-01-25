@@ -1,16 +1,14 @@
 package test.java;
 
-import org.junit.Test;
 import org.junit.Assert;
 import com.hypnootis.pointinsidepolygon.*;
 
-import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 
 public abstract class AbstractPolygonTest {
-	
-	private String tempFolder = System.getProperty("java.io.tmpdir");
 	
 
 	private Polygon createPolygon(ArrayList<Point> polygonPoints, String polygonName) {
@@ -19,8 +17,14 @@ public abstract class AbstractPolygonTest {
 		for (Point point : polygonPoints) {
 			testPolygon.setPoint(point);
 			
-		FileManager.createFile(polygonName + ".txt", Paths.get(tempFolder));
-		testPolygon.writeResults(polygonName + ".txt");
+		try {
+		Path tempFilePath = Files.createTempFile(polygonName, ".txt");
+		testPolygon.writeResults(polygonName + ".txt", tempFilePath);
+		
+		} catch (Exception e){		
+			System.out.println("Error creating temp file!");
+			e.printStackTrace();
+		}
 		}
 		
 		return testPolygon;

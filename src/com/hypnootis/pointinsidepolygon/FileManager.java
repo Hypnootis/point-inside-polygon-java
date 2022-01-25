@@ -9,9 +9,8 @@ public class FileManager {
 	
 		private static List<String> fileContents;
 	
-		public void ReadFile(String fileName) {
+		public void ReadFile(String fileName, Path path) {
 		
-			Path path = Paths.get("src/" + fileName);
 			try {
 			
 				// java.nio.file.File returns file contents in List<String> format
@@ -61,9 +60,8 @@ public class FileManager {
 		}
 		
 		
-		public static void writeToFile(ArrayList<String> writing, String fileName) {
+		public static void writeToFile(ArrayList<String> writing, String fileName, Path path) {
 			
-			Path path = Paths.get("src/" + fileName);
 			createFile(fileName, path);
 			
 			try {

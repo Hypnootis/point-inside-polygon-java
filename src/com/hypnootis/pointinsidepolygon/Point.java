@@ -1,5 +1,6 @@
 package com.hypnootis.pointinsidepolygon;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class Point {
 		
 		ArrayList<Point> pointsArray = new ArrayList<Point>();
 		FileManager reader = new FileManager();
-		reader.ReadFile(fileName);
+		reader.ReadFile(fileName, Paths.get("src/", fileName));
 		List<String> lines = reader.getData();
 		
 		for (String line : lines) {
