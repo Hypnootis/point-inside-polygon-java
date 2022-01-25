@@ -15,7 +15,7 @@ public class TestPolygonWithoutFile extends AbstractPolygonTest {
 		testPoints.add(new Point(3.5, 12.6));
 		testPoints.add(new Point(2.1, 75.1));
 		
-		super.canSetPoints(testPoints, "testPolygon.txt");
+		super.canSetPoints(testPoints, "testPolygon");
 	}
 	
 }

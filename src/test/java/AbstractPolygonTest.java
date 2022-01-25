@@ -6,6 +6,7 @@ import com.hypnootis.pointinsidepolygon.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public abstract class AbstractPolygonTest {
@@ -19,7 +20,13 @@ public abstract class AbstractPolygonTest {
 			
 		try {
 		Path tempFilePath = Files.createTempFile(polygonName, ".txt");
-		testPolygon.writeResults(polygonName + ".txt", tempFilePath);
+		
+		ArrayList<String> coords = new ArrayList<String>();
+		
+		for (Point p : testPolygon.getPoints()) {
+			coords.add(Arrays.toString(p.getCoordinates()));
+		}
+		FileManager.writeToFile(coords, polygonName, tempFilePath);
 		
 		} catch (Exception e){		
 			System.out.println("Error creating temp file!");
