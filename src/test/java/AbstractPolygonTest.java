@@ -11,7 +11,6 @@ import java.util.Arrays;
 
 public abstract class AbstractPolygonTest {
 	
-
 	private Polygon createPolygon(ArrayList<Point> polygonPoints, String polygonName) {
 		Polygon testPolygon = new Polygon();
 		

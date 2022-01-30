@@ -1,7 +1,6 @@
 package com.hypnootis.pointinsidepolygon;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -55,7 +54,7 @@ public class Polygon {
 
 	public void pointsFromFile(String fileName) {
 		
-	ArrayList<Point> pointsArray = Point.coordinatesFromFile(fileName);
+	ArrayList<Point> pointsArray = FileManager.coordinatesFromFile(fileName);
 		
 	for (Point newPoint : pointsArray) {
 		this.coordinates.add(newPoint);

@@ -1,9 +1,5 @@
 package com.hypnootis.pointinsidepolygon;
 
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Point {
 
 	private double[] points = new double[2];
@@ -43,34 +39,6 @@ public class Point {
 		} catch (Exception e) {
 			System.out.println("Input must be two integers or a list of two integers!");
 		}
-	}
-	
-	public static ArrayList<Point> coordinatesFromFile(String fileName) {
-		
-		ArrayList<Point> pointsArray = new ArrayList<Point>();
-		FileManager reader = new FileManager();
-		reader.ReadFile(fileName, Paths.get("src/", fileName));
-		List<String> lines = reader.getData();
-		
-		for (String line : lines) {
-			String[] strCoordinates = line.split(",");
-			double[] dblCoordinates = new double[2]; // ex. line: [1.5, 1.2]
-			
-			try {
-			dblCoordinates[0] = Double.parseDouble(strCoordinates[0]);
-			dblCoordinates[1] = Double.parseDouble(strCoordinates[1]);
-			
-			pointsArray.add(new Point(dblCoordinates));
-			
-			
-			} catch (Exception e) {
-				System.out.println("Failed to convert line to double!");
-			}
-		}
-		
-		return pointsArray;
-		
-		
 	}
 
 }

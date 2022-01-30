@@ -8,8 +8,18 @@ import java.util.List;
 public class FileManager {
 	
 		private static List<String> fileContents;
-	
-		public void ReadFile(String fileName, Path path) {
+		private static Path filePath;
+		
+		public static void setTestMode(Boolean set) {
+			if (set) {
+				filePath = Paths.get("src/");
+			}
+			else {
+				Paths.get("src/");
+			}
+		}
+		
+		public static void ReadFile(String fileName, Path path) {
 		
 			try {
 			
@@ -77,4 +87,31 @@ public class FileManager {
 		}
 		}
 
+		public static ArrayList<Point> coordinatesFromFile(String fileName) {
+			
+			ArrayList<Point> pointsArray = new ArrayList<Point>();
+			ReadFile(fileName, filePath);
+			List<String> lines = fileContents;
+			
+			for (String line : lines) {
+				String[] strCoordinates = line.split(",");
+				double[] dblCoordinates = new double[2]; // ex. line: [1.5, 1.2]
+				
+				try {
+				dblCoordinates[0] = Double.parseDouble(strCoordinates[0]);
+				dblCoordinates[1] = Double.parseDouble(strCoordinates[1]);
+				
+				pointsArray.add(new Point(dblCoordinates));
+				
+				
+				} catch (Exception e) {
+					System.out.println("Failed to convert line to double!");
+				}
+			}
+			
+			return pointsArray;
+			
+			
+		}
+		
 }
