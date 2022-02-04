@@ -12,10 +12,10 @@ public class FileManager {
 		
 		public static void setTestMode(Boolean set) {
 			if (set) {
-				filePath = Paths.get("src/");
+				filePath = Path.of(System.getProperty("java.io.tmpdir"));
 			}
 			else {
-				Paths.get("src/");
+				filePath = Paths.get("src").toAbsolutePath();
 			}
 		}
 		
@@ -113,5 +113,11 @@ public class FileManager {
 			
 			
 		}
+		
+		public static Path getDefaultPath() {
+			return filePath;
+		}
+		
+		
 		
 }

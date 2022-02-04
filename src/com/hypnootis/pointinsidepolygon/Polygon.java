@@ -50,15 +50,6 @@ public class Polygon {
 		this.testPointsInside.add(testPoint);
 		
 	return (intersections % 2 != 0 ? true : false);
-	}
-
-	public void pointsFromFile(String fileName) {
-		
-	ArrayList<Point> pointsArray = FileManager.coordinatesFromFile(fileName);
-		
-	for (Point newPoint : pointsArray) {
-		this.coordinates.add(newPoint);
-	}
 	} 
 	
 	public void writeResults(String fileName, Path path) {

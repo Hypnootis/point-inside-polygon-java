@@ -12,6 +12,9 @@ import java.util.Arrays;
 public abstract class AbstractPolygonTest {
 	
 	private Polygon createPolygon(ArrayList<Point> polygonPoints, String polygonName) {
+		
+		FileManager.setTestMode(true);
+		
 		Polygon testPolygon = new Polygon();
 		
 		for (Point point : polygonPoints) {
@@ -25,7 +28,7 @@ public abstract class AbstractPolygonTest {
 		for (Point p : testPolygon.getPoints()) {
 			coords.add(Arrays.toString(p.getCoordinates()));
 		}
-		FileManager.writeToFile(coords, polygonName, tempFilePath);
+		FileManager.writeToFile(coords, polygonName, FileManager.getDefaultPath());
 		
 		} catch (Exception e){		
 			System.out.println("Error creating temp file!");
@@ -48,7 +51,6 @@ public abstract class AbstractPolygonTest {
 	public void isInsidePolygon(ArrayList<Point> testPoints, Point pointInside, String polygonName) {
 		
 		Polygon testPolygon = createPolygon(testPoints, polygonName);
-		
 		
 		Assert.assertTrue(testPolygon.isInside(pointInside));
 	}
