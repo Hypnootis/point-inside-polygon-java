@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-	TestPolygonWithFile.class, TestPolygonWithoutFile.class
+	TestPolygonWithoutFile.class, TestPolygonWithFile.class
 })
 
 

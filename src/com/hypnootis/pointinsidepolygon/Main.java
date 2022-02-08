@@ -13,6 +13,7 @@ public class Main {
 		 * testing if the point is inside or outside the polygon
 		 * then writing the results to a text file 
 		 */
+		/*
 		Polygon testPolygon = new Polygon();
 		ArrayList<Point> testPoints = Point.coordinatesFromFile("pisteet.txt");
 		
@@ -25,6 +26,7 @@ public class Main {
 		
 		
 		testPolygon.writeResults("selvitys.txt", Paths.get("src/"));
+		*/
 	}
 
 }

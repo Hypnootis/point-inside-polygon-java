@@ -8,6 +8,7 @@ public class Polygon {
 
 	private ArrayList<Point> coordinates = new ArrayList<Point>();
 	private ArrayList<Point> testPointsInside = new ArrayList<Point>();
+	private Path polygonPath;
 	
 	public void setPoint(Point newCoordinate) {
 		
@@ -18,6 +19,14 @@ public class Polygon {
 		
 		return this.coordinates;
 		
+	}
+	
+	public void setPath(Path path) {
+		this.polygonPath = path;
+	}
+	
+	public Path getPath() {
+		return this.polygonPath;
 	}
 
 	public boolean isInside(Point testPoint) {
@@ -52,14 +61,14 @@ public class Polygon {
 	return (intersections % 2 != 0 ? true : false);
 	} 
 	
-	public void writeResults(String fileName, Path path) {
+	public void writeResults(Path path) {
 		
 		ArrayList<String> content = new ArrayList<String>();
 		
 		for (Point point : testPointsInside) {
 		content.add("Point " + Arrays.toString(point.getCoordinates()) + " is inside the polygon");
 	}
-		FileManager.writeToFile(content, fileName, path);
+		FileManager.writeToFile(content, path);
 	}
 
 }

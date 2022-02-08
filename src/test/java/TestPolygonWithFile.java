@@ -6,23 +6,22 @@ import org.junit.Test;
 
 import com.hypnootis.pointinsidepolygon.*;
 
-public class TestPolygonWithFile extends AbstractPolygonTest {
+public class TestPolygonWithFile extends TestPolygonWithoutFile {
 	
 	@Test
 	public void canSetPoints() {
-		ArrayList<Point> testPoints = new ArrayList<Point>();
-		testPoints = FileManager.coordinatesFromFile("");
-		
-		FileManager.ReadFile(null, null);
-		
-		super.canSetPoints(testPoints, "myPoints");
+
+		System.out.println(super.testPolygon.getPath());
+		ArrayList<Point> polygonPoints = FileManager.coordinatesFromFile(testPolygon.getPath());
+		testPolygon = super.createPolygon(polygonPoints, "testPolygon");
+		super.canSetPoints(testPolygon, super.testPointsArray);
 	}
 	
 	@Test
 	public void isInsideTriangle() {
-		ArrayList<Point> testPoints = new ArrayList<Point>();
 		
-		super.isInsidePolygon(null, null, null);
+		testPolygon = super.createPolygon(FileManager.coordinatesFromFile(super.testPolygon.getPath()), "triangle");
+		super.isInsidePolygon(testPolygon, super.testPoint, "triangle");
 	}
 
 	

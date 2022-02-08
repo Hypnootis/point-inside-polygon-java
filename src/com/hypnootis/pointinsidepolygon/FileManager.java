@@ -8,18 +8,9 @@ import java.util.List;
 public class FileManager {
 	
 		private static List<String> fileContents;
-		private static Path filePath;
+		public static Path defaultPath = Paths.get("src").toAbsolutePath();
 		
-		public static void setTestMode(Boolean set) {
-			if (set) {
-				filePath = Path.of(System.getProperty("java.io.tmpdir"));
-			}
-			else {
-				filePath = Paths.get("src").toAbsolutePath();
-			}
-		}
-		
-		public static void ReadFile(String fileName, Path path) {
+		public static void ReadFile(Path path) {
 		
 			try {
 			
@@ -27,7 +18,7 @@ public class FileManager {
 				fileContents = Files.readAllLines(path);
 			
 				if (fileContents.isEmpty()) {
-				throw new RuntimeException(fileName + " is an empty file");
+				throw new RuntimeException("File is empty");
 				}
 			
 				}
@@ -70,9 +61,8 @@ public class FileManager {
 		}
 		
 		
-		public static void writeToFile(ArrayList<String> writing, String fileName, Path path) {
+		public static void writeToFile(ArrayList<String> writing, Path path) {
 			
-			createFile(fileName, path);
 			
 			try {
 				
@@ -87,10 +77,9 @@ public class FileManager {
 		}
 		}
 
-		public static ArrayList<Point> coordinatesFromFile(String fileName) {
+		public static ArrayList<Point> coordinatesFromFile(Path path) {
 			
 			ArrayList<Point> pointsArray = new ArrayList<Point>();
-			ReadFile(fileName, filePath);
 			List<String> lines = fileContents;
 			
 			for (String line : lines) {
@@ -113,11 +102,8 @@ public class FileManager {
 			
 			
 		}
-		
-		public static Path getDefaultPath() {
-			return filePath;
-		}
-		
-		
-		
 }
+		
+		
+		
+
