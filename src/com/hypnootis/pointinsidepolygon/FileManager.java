@@ -10,7 +10,7 @@ public class FileManager {
 		private static List<String> fileContents;
 		public static Path defaultPath = Paths.get("src").toAbsolutePath();
 		
-		public static void ReadFile(Path path) {
+		public static void readFile(Path path) {
 		
 			try {
 			
@@ -79,6 +79,7 @@ public class FileManager {
 
 		public static ArrayList<Point> coordinatesFromFile(Path path) {
 			
+			readFile(path);
 			ArrayList<Point> pointsArray = new ArrayList<Point>();
 			List<String> lines = fileContents;
 			

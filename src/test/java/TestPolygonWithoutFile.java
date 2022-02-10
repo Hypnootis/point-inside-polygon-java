@@ -9,15 +9,21 @@ import com.hypnootis.pointinsidepolygon.*;
 public class TestPolygonWithoutFile extends AbstractPolygonTest {
 	
 	ArrayList<Point> testPointsArray = new ArrayList<Point>();
-	Point testPoint = new Point(2.7, 12.2);
-	Polygon testPolygon = new Polygon();
+	Polygon paskaPolygon = new Polygon();
 	
 	@Test
 	public void canSetPoints() {
 		testPointsArray.add(new Point(2.5, 1.2));
 		testPointsArray.add(new Point(3.5, 12.6));
 		testPointsArray.add(new Point(2.1, 75.1));
-		testPolygon = super.createPolygon(testPointsArray, "testPolygon");
+		
+		for (Point p : testPointsArray) {
+			TestPoints.addPoint(p);
+		}
+		
+		Polygon testPolygon = super.createPolygon(testPointsArray, "testPolygon");
+		TestPoints.addShape("testPolygon", testPolygon);
+		
 		super.canSetPoints(testPolygon, testPointsArray);
 	}
 	
@@ -29,8 +35,12 @@ public class TestPolygonWithoutFile extends AbstractPolygonTest {
 		polygonPoints.add(new Point(2.7, 12.2));
 		polygonPoints.add(new Point(3.2, 12.9));
 		
+		Point testPoint = new Point(2.7, 13.1);
+		TestPoints.addPoint(testPoint);
 		
-		testPolygon = super.createPolygon(polygonPoints, "triangle");
+		
+		Polygon testPolygon = super.createPolygon(polygonPoints, "triangle");
+		TestPoints.addShape("triangle", testPolygon);
 		
 		super.isInsidePolygon(testPolygon, testPoint, "triangle");
 	}

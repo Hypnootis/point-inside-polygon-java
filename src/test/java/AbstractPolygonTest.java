@@ -50,6 +50,11 @@ public abstract class AbstractPolygonTest {
 		Assert.assertTrue(testPolygon.isInside(pointInside));
 	}
 	
+	public void isInsidePolygon(Polygon testPolygon, ArrayList<Point> points, String polygonName) {
+		
+		Assert.assertTrue(testPolygon.areInside(points));
+	}
+	
 
 }
 	

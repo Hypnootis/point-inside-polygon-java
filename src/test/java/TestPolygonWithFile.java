@@ -1,5 +1,6 @@
 package test.java;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -8,20 +9,24 @@ import com.hypnootis.pointinsidepolygon.*;
 
 public class TestPolygonWithFile extends TestPolygonWithoutFile {
 	
+	
+	
 	@Test
 	public void canSetPoints() {
 
-		System.out.println(super.testPolygon.getPath());
-		ArrayList<Point> polygonPoints = FileManager.coordinatesFromFile(testPolygon.getPath());
-		testPolygon = super.createPolygon(polygonPoints, "testPolygon");
-		super.canSetPoints(testPolygon, super.testPointsArray);
+		Path polygonPath = TestPoints.getShape("testPolygon").getPath();
+		ArrayList<Point> polygonPoints = FileManager.coordinatesFromFile(polygonPath);
+		Polygon testPolygon = super.createPolygon(polygonPoints, "testPolygon");
+		System.out.println(TestPoints.getPoints());
+		super.canSetPoints(testPolygon, TestPoints.getPoints());
 	}
 	
 	@Test
 	public void isInsideTriangle() {
 		
-		testPolygon = super.createPolygon(FileManager.coordinatesFromFile(super.testPolygon.getPath()), "triangle");
-		super.isInsidePolygon(testPolygon, super.testPoint, "triangle");
+		Path polygonPath = TestPoints.getShape("triangle").getPath();
+		Polygon testPolygon = super.createPolygon(FileManager.coordinatesFromFile(polygonPath), "triangle");
+		super.isInsidePolygon(testPolygon, TestPoints.getPoints(), "triangle");
 	}
 
 	

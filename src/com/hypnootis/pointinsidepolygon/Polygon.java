@@ -61,6 +61,19 @@ public class Polygon {
 	return (intersections % 2 != 0 ? true : false);
 	} 
 	
+	public Boolean areInside(ArrayList<Point> points) {
+		
+		int amountInside = 0;
+		
+		for (Point p : points) {
+			if (this.isInside(p)) {
+				amountInside++;
+			}
+		}
+		
+		return (amountInside == points.size() ? true : false);
+	}
+	
 	public void writeResults(Path path) {
 		
 		ArrayList<String> content = new ArrayList<String>();
