@@ -84,6 +84,8 @@ public class FileManager {
 			List<String> lines = fileContents;
 			
 			for (String line : lines) {
+				line = line.replace("]", "");
+				line = line.replace("[", "");
 				String[] strCoordinates = line.split(",");
 				double[] dblCoordinates = new double[2]; // ex. line: [1.5, 1.2]
 				
