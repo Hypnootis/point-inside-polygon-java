@@ -25,11 +25,22 @@ public class TestPoints {
 	}
 	
 	public static void addPoint(Point point) {
+		
 		testPoints.add(point);
 	}
 	
+	public static void addPoints(Point[] points) {
+		for (Point p : points) {
+			testPoints.add(p);	}
+	}
+	
 	public static ArrayList<Point> getPoints(){
+		
 		return testPoints;
+	}
+	
+	public static void emptyPointsArray() {
+		testPoints.clear();
 	}
 	
 }

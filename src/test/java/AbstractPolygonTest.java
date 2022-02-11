@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 public abstract class AbstractPolygonTest {
 	
+	
 	public Polygon createPolygon(ArrayList<Point> polygonPoints, String polygonName) {
 		
 		Polygon testPolygon = new Polygon();
@@ -40,18 +41,17 @@ public abstract class AbstractPolygonTest {
 	
 	
 
-	public void canSetPoints(Polygon testPolygon, ArrayList<Point> testPoints) {
-		 
-		Assert.assertEquals(testPoints, testPolygon.getPoints());
-	}
+
 	
 	public void isInsidePolygon(Polygon testPolygon, Point pointInside, String polygonName) {
 		
+		TestPoints.emptyPointsArray();
 		Assert.assertTrue(testPolygon.isInside(pointInside));
 	}
 	
 	public void isInsidePolygon(Polygon testPolygon, ArrayList<Point> points, String polygonName) {
 		
+		TestPoints.emptyPointsArray();
 		Assert.assertTrue(testPolygon.areInside(points));
 	}
 	
